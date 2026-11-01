@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>John Doe | Portfolio</title>
+
+<style>
+
+:root{
+    --primary:#2563eb;
+    --secondary:#0f172a;
+    --accent:#38bdf8;
+    --light:#f8fafc;
+    --dark:#111827;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:var(--light);
+    color:#333;
+    line-height:1.6;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode section{
+    background:#1e1e1e;
+    color:white;
+}
+
+.dark-mode .project-card{
+    background:#2b2b2b;
+    color:white;
+}
+
+header{
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    color:white;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.profile-img{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    border:5px solid white;
+    object-fit:cover;
+    margin-bottom:20px;
+}
+
+header h1{
+    font-size:3rem;
+}
+
+header p{
+    font-size:1.3rem;
+    margin-top:10px;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(15,23,42,.95);
+    z-index:1000;
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:var(--accent);
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    margin:15px 10px;
+    background:white;
+    color:var(--primary);
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+section{
+    padding:80px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    color:var(--primary);
+    font-size:2rem;
+}
+
+.about{
+    text-align:center;
+}
+
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.stat{
+    text-align:center;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.skills-container{
+    max-width:800px;
+    margin:auto;
+}
+
+.skill{
+    margin-bottom:20px;
+}
+
+.skill-name{
+    display:flex;
+    justify-content:space-between;
+}
+
+.skill-bar{
+    background:#ddd;
+    height:15px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.skill-progress{
+    height:100%;
+    background:linear-gradient(90deg,var(--primary),var(--accent));
+}
+
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.project-card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+}
+
+.project-card img{
+    width:100%;
+}
+
+.project-content{
+    padding:20px;
+}
+
+.project-content h3{
+    margin-bottom:10px;
+}
+
+.contact-form{
+    max-width:700px;
+    margin:auto;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.contact-form button{
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:12px 30px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.contact-form button:hover{
+    background:#1d4ed8;
+}
+
+footer{
+    background:var(--secondary);
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+#topBtn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    display:none;
+    border:none;
+    background:var(--primary);
+    color:white;
+    padding:10px 15px;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.toggle-btn{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:black;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+
+header h1{
+font-size:2.2rem;
+}
+
+.stats{
+flex-direction:column;
+align-items:center;
+}
+
+nav a{
+display:block;
+margin:10px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<header>
+
+<img
+src="https://via.placeholder.com/180"
+alt="Professional headshot of John Doe"
+class="profile-img">
+
+<h1>John Doe</h1>
+
+<p id="typing"></p>
+
+<a href="#" class="btn">Download Resume</a>
+<a href="#contact" class="btn">Hire Me</a>
+
+</header>
+
+<section id="about">
+<div class="container">
+
+<h2 class="section-title">About Me</h2>
+
+<div class="about">
+<p>
+
+I'm a passionate web developer who enjoys creating
+beautiful, responsive, and user-friendly websites.
+I specialize in HTML, CSS, JavaScript, and modern
+front-end development techniques.
+
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<h3>10+</h3>
+<p>Projects</p>
+</div>
+
+<div class="stat">
+<h3>3+</h3>
+<p>Technologies</p>
+</div>
+
+<div class="stat">
+<h3>100%</h3>
+<p>Dedication</p>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="skills">
+
+<div class="container">
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills-container">
+
+<div class="skill">
+<div class="skill-name">
+<span>HTML</span>
+<span>95%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width:95%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-name">
+<span>CSS</span>
+<span>90%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width:90%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-name">
+<span>JavaScript</span>
+<span>85%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width:85%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-name">
+<span>Responsive Design</span>
+<span>90%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width:90%"></div>
+</div>
+</div>
+
+</div>
+</div>
+
+</section>
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title">Projects</h2>
+
+<div class="projects-grid">
+
+<div class="project-card">
+
+<img
+src="https://via.placeholder.com/400x250"
+alt="Portfolio website screenshot">
+
+<div class="project-content">
+<h3>Portfolio Website</h3>
+<p>Personal portfolio created using HTML, CSS, and JavaScript.</p>
+</div>
+
+</div>
+
+<div class="project-card">
+
+<img
+src="https://via.placeholder.com/400x250"
+alt="Weather application screenshot">
+
+<div class="project-content">
+<h3>Weather App</h3>
+<p>Weather forecasting application using API integration.</p>
+</div>
+
+</div>
+
+<div class="project-card">
+
+<img
+src="https://via.placeholder.com/400x250"
+alt="Task management application screenshot">
+
+<div class="project-content">
+<h3>Task Manager</h3>
+<p>Productivity tool created with JavaScript.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="container">
+
+<h2 class="section-title">Contact Me</h2>
+
+<form id="contactForm" class="contact-form">
+
+<input
+type="text"
+id="name"
+placeholder="Your Name"
+aria-label="Name"
+required>
+
+<input
+type="email"
+id="email"
+placeholder="Your Email"
+aria-label="Email"
+required>
+
+<textarea
+id="message"
+rows="5"
+placeholder="Your Message"
+aria-label="Message"
+required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+<p id="successMessage" style="text-align:center;margin-top:20px;"></p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 John Doe | Web Developer Portfolio
+</p>
+
+</footer>
+
+<button id="topBtn">↑</button>
+<button class="toggle-btn" onclick="toggleDarkMode()">🌙 Theme</button>
+
+<script>
+
+// Typing Effect
+
+const roles =
+[
+"Web Developer",
+"UI Designer",
+"JavaScript Programmer",
+"Future Software Engineer"
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+
+function typeEffect(){
+
+const typing =
+document.getElementById("typing");
+
+if(charIndex < roles[roleIndex].length){
+
+typing.textContent +=
+roles[roleIndex].charAt(charIndex);
+
+charIndex++;
+
+setTimeout(typeEffect,100);
+
+}else{
+
+setTimeout(() => {
+
+typing.textContent="";
+charIndex=0;
+
+roleIndex++;
+
+if(roleIndex >= roles.length){
+roleIndex=0;
+}
+
+typeEffect();
+
+},1500);
+
+}
+}
+
+typeEffect();
+
+// Dark Mode
+
+function toggleDarkMode(){
+document.body.classList.toggle("dark-mode");
+}
+
+// Form Validation
+
+document
+.getElementById("contactForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+document
+.getElementById("successMessage")
+.innerHTML =
+"✅ Thank you! Your message has been successfully submitted.";
+
+this.reset();
+
+});
+
+// Back To Top
+
+let topBtn =
+document.getElementById("topBtn");
+
+window.onscroll = function(){
+
+if(document.documentElement.scrollTop > 300){
+topBtn.style.display = "block";
+}else{
+topBtn.style.display = "none";
+}
+
+};
+
+topBtn.onclick = function(){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+</script>
+
+</body>
+</html>
